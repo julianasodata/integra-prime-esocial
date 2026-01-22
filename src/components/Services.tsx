@@ -66,7 +66,7 @@ const Services = () => {
 
   return (
     <section id="servicos" className="py-24 bg-gradient-subtle">
-      <div className="container">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -27,8 +27,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="py-24 bg-gradient-dark text-primary-foreground">
-      <div className="container">
+    <section id="contato" className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <motion.div
@@ -90,12 +90,11 @@ const Contact = () => {
               ))}
             </div>
 
-            <Button
-              asChild
-              size="lg"
-              variant="hero"
-              className="group"
-            >
+             <Button
+                asChild
+                size="lg"
+                className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold group transition-all"
+              >
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Iniciar Conversa no WhatsApp

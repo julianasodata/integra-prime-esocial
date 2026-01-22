@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/thumb_logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,18 +28,18 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft py-3"
-          : "bg-transparent py-5"
-      }`}
+          ? "bg-card/95 backdrop-blur-md shadow-soft"
+          : "bg-transparent"
+      } h-20 lg:h-24`}
     >
-      <div className="container">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 h-full">
+        <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <a href="#" className="flex items-center">
             <img
               src={logoImg}
               alt="Integra Prime - Gestão de eSocial e SST"
-              className="h-10 md:h-12 w-auto"
+              className="h-12 md:h-14 lg:h-16 w-auto transition-all" // Aumentei um pouco a proporção
             />
           </a>
 
@@ -62,7 +62,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild variant={isScrolled ? "default" : "hero"} size="sm">
+            <Button asChild variant={isScrolled ? "default" : "hero"} size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-6 rounded-lg font-semibold group transition-all">
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 <Phone className="w-4 h-4 mr-2" />
                 Fale Comigo
@@ -102,7 +102,11 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button asChild variant="default" className="mt-2">
+               <Button
+                asChild
+                size="lg"
+                className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold group transition-all"
+              >
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <Phone className="w-4 h-4 mr-2" />
                   Fale Comigo

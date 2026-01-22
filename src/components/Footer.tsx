@@ -6,8 +6,8 @@ const Footer = () => {
   const whatsappLink = "https://wa.me/5544988256277";
 
   return (
-    <footer className="bg-secondary text-primary-foreground py-12">
-      <div className="container">
+    <footer className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
+     <div className="mx-auto max-w-[1400px] pt-8 pb-8">
         <div className="grid md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>

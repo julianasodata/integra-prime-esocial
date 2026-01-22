@@ -22,8 +22,8 @@ const credentials = [
 
 const About = () => {
   return (
-    <section id="sobre" className="py-24 bg-card">
-      <div className="container">
+    <section id="sobre" className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
+     <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
           <motion.div

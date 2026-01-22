@@ -99,6 +99,7 @@
 }
 
 @layer base {
+  
   * {
     @apply border-border;
   }
@@ -118,9 +119,12 @@
 }
 
 @layer utilities {
+  
   .text-gradient {
-    @apply bg-clip-text text-transparent;
     background-image: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   .bg-gradient-primary {
@@ -148,6 +152,9 @@
   }
 
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
+  
 }
