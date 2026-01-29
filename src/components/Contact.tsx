@@ -21,7 +21,7 @@ const Contact = () => {
     {
       icon: Clock,
       label: "Horário",
-      value: "Seg - Sex: 8h às 18h",
+      value: "Seg - Sex: 8h às 17h",
       href: null,
     },
   ];

@@ -119,11 +119,13 @@ const Hero = () => {
               className="mt-12 flex flex-wrap gap-12 text-white justify-center"
             >
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#0D93F2]">100+</div>
-                <div className="text-sm text-gray-200">Empresas Atendidas</div>
+                {/* <div className="text-3xl font-bold text-[#0D93F2]">100+</div> */}
+                <div className="text-3xl font-bold text-[#0D93F2]">Muitas</div>
+                <div className="text-sm text-gray-200">Empresas Satisfeitas</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-[#0D93F2]">5+</div>
+                {/* <div className="text-3xl font-bold text-[#0D93F2]">5+</div> */}
+                <div className="text-3xl font-bold text-[#0D93F2]">Muitos</div>
                 <div className="text-sm text-gray-200">Anos de Experiência</div>
               </div>
               <div className="text-center">
