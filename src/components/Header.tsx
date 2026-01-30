@@ -12,17 +12,27 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { href: "#servicos", label: "Serviços" },
-    { href: "#sobre", label: "Sobre" },
-    { href: "#contato", label: "Contato" },
+    { id: "servicos", label: "Serviços" },
+    { id: "sobre", label: "Sobre" },
+    { id: "contato", label: "Contato" },
   ];
 
-  const whatsappLink = "https://wa.me/5544988256277?text=Olá! Gostaria de saber mais sobre os serviços de eSocial e SST.";
+  const whatsappLink =
+    "https://wa.me/5544988256277?text=Olá! Gostaria de saber mais sobre os serviços de eSocial e SST.";
+
+  const handleScrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -35,20 +45,23 @@ const Header = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
-          <a href="#" className="flex items-center">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center"
+          >
             <img
               src={logoImg}
               alt="Integra Prime - Gestão de eSocial e SST"
-              className="h-12 md:h-14 lg:h-16 w-auto transition-all" // Aumentei um pouco a proporção
+              className="h-12 md:h-14 lg:h-16 w-auto transition-all"
             />
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <button
+                key={link.id}
+                onClick={() => handleScrollToSection(link.id)}
                 className={`font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-primary"
@@ -56,13 +69,18 @@ const Header = () => {
                 }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild variant={isScrolled ? "default" : "hero"} size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-6 rounded-lg font-semibold group transition-all">
+            <Button
+              asChild
+              variant={isScrolled ? "default" : "hero"}
+              size="lg"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-6 rounded-lg font-semibold transition-all"
+            >
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 <Phone className="w-4 h-4 mr-2" />
                 Fale Comigo
@@ -77,7 +95,11 @@ const Header = () => {
               isScrolled ? "text-foreground" : "text-primary-foreground"
             }`}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>
@@ -93,21 +115,25 @@ const Header = () => {
           >
             <nav className="container py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground font-medium py-2 hover:text-primary transition-colors"
+                <button
+                  key={link.id}
+                  onClick={() => handleScrollToSection(link.id)}
+                  className="text-foreground font-medium py-2 hover:text-primary transition-colors text-left"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
-               <Button
+
+              <Button
                 asChild
                 size="lg"
-                className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold group transition-all"
+                className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold transition-all"
               >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Phone className="w-4 h-4 mr-2" />
                   Fale Comigo
                 </a>
