@@ -1,8 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-export default defineConfig({
-  base: "/integra-prime-esocial/",
-})
+export default defineConfig(({ mode }) => ({
+  base: mode === "production" ? "/integra-prime-esocial/" : "/",
+
+  plugins: [react()],
+
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
