@@ -27,4 +27,14 @@ git add .
 git config --global user.email "Juliana.snto.oliveira@gmail.com"
 git commit -m "Initial commit"
 git push
+
+ou
+
+push git hub para pages:
+
+npm run build
+git add .
+git config --global user.email "Juliana.snto.oliveira@gmail.com"
+git commit -m "Build"
+git push
 -->
