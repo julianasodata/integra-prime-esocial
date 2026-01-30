@@ -21,9 +21,10 @@ ou
 npm run dev
 
 
-push git hub
+1 - push git hub:
 git init
 git add .
+git config --global user.email "Juliana.snto.oliveira@gmail.com"
 git commit -m "Initial commit"
 git push
 -->
