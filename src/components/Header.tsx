@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import logoImg from "@/assets/thumb_logo.png";
 
+const HEADER_HEIGHT = 96; // ajuste se mudar o header
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,7 +15,7 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -26,12 +28,22 @@ const Header = () => {
   const whatsappLink =
     "https://wa.me/5544988256277?text=Olá! Gostaria de saber mais sobre os serviços de eSocial e SST.";
 
-  const handleScrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+
+    setIsMobileMenuOpen(false);
+
+    // espera o menu fechar antes de scrollar (mobile fix)
+    setTimeout(() => {
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }, 150);
   };
 
   return (
@@ -46,13 +58,15 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center"
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+            className="flex items-center touch-manipulation"
           >
             <img
               src={logoImg}
-              alt="Integra Prime - Gestão de eSocial e SST"
-              className="h-12 md:h-14 lg:h-16 w-auto transition-all"
+              alt="Integra Prime"
+              className="h-12 md:h-14 lg:h-16 w-auto"
             />
           </button>
 
@@ -61,7 +75,7 @@ const Header = () => {
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => handleScrollToSection(link.id)}
+                onClick={() => scrollToSection(link.id)}
                 className={`font-medium transition-colors ${
                   isScrolled
                     ? "text-foreground hover:text-primary"
@@ -73,14 +87,9 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA */}
           <div className="hidden md:block">
-            <Button
-              asChild
-              variant={isScrolled ? "default" : "hero"}
-              size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-6 rounded-lg font-semibold transition-all"
-            >
+            <Button asChild size="lg">
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 <Phone className="w-4 h-4 mr-2" />
                 Fale Comigo
@@ -88,12 +97,13 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Toggle */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 ${
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
+            className={`md:hidden p-2 touch-manipulation ${
               isScrolled ? "text-foreground" : "text-primary-foreground"
             }`}
+            aria-label="Abrir menu"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -108,32 +118,25 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
             className="md:hidden bg-card border-t border-border"
           >
-            <nav className="container py-4 flex flex-col gap-4">
+            <nav className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
-                  onClick={() => handleScrollToSection(link.id)}
-                  className="text-foreground font-medium py-2 hover:text-primary transition-colors text-left"
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-left text-foreground font-medium py-3 text-lg touch-manipulation"
                 >
                   {link.label}
                 </button>
               ))}
 
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold transition-all"
-              >
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <Button asChild size="lg">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <Phone className="w-4 h-4 mr-2" />
                   Fale Comigo
                 </a>
