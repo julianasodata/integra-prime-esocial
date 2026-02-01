@@ -1,14 +1,29 @@
-import { Phone, Mail, Linkedin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const whatsappLink = "https://wa.me/5544988256277";
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const headerOffset = 96; // altura do header fixo
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
-     <div className="mx-auto max-w-[1400px] pt-8 pb-8">
+      <div className="mx-auto max-w-[1400px] pt-8 pb-8 px-6">
         <div className="grid md:grid-cols-3 gap-10">
+
           {/* Brand */}
           <div>
             <img
@@ -17,36 +32,45 @@ const Footer = () => {
               className="h-12 w-auto mb-4 brightness-0 invert"
             />
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
-              Gestão completa de eSocial e SST para empresas que buscam 
+              Gestão completa de eSocial e SST para empresas que buscam
               conformidade legal e tranquilidade.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navegação */}
           <div>
-            <h4 className="font-bold mb-4">Navegação</h4>
+            <h4 className="font-bold mb-4 text-white">Navegação</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#servicos" className="text-primary-foreground/70 hover:text-accent transition-colors">
+                <button
+                  onClick={() => scrollToSection("servicos")}
+                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                >
                   Serviços
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#sobre" className="text-primary-foreground/70 hover:text-accent transition-colors">
+                <button
+                  onClick={() => scrollToSection("sobre")}
+                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                >
                   Sobre
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#contato" className="text-primary-foreground/70 hover:text-accent transition-colors">
+                <button
+                  onClick={() => scrollToSection("contato")}
+                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                >
                   Contato
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contato */}
           <div>
-            <h4 className="font-bold mb-4">Contato</h4>
+            <h4 className="font-bold mb-4 text-white">Contato</h4>
             <ul className="space-y-3">
               <li>
                 <a
@@ -72,12 +96,13 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Bottom */}
         <div className="border-t border-primary-foreground/20 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/60 text-sm">
             © {currentYear} Integra Prime. Todos os direitos reservados.
           </p>
           <p className="text-primary-foreground/60 text-sm">
-            Felipe Angelo dos Santos - Técnico de Segurança do Trabalho
+            Felipe Angelo dos Santos — Técnico de Segurança do Trabalho
           </p>
         </div>
       </div>
