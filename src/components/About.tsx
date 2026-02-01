@@ -1,114 +1,65 @@
-import { motion } from "framer-motion";
-import { Award, CheckCircle2, BookOpen, Building2 } from "lucide-react";
-import felipeImg from "@/assets/felipe-professional.jpg";
-
-const credentials = [
-  {
-    icon: Award,
-    title: "Técnico de Segurança Certificado",
-    description: "Registro ativo no Ministério do Trabalho",
-  },
-  {
-    icon: BookOpen,
-    title: "Especialista em eSocial SST",
-    description: "Atualização constante nas normativas",
-  },
-  {
-    icon: Building2,
-    title: "Experiência Multissetorial",
-    description: "Atendimento a diversos segmentos",
-  },
-];
+import { ShieldCheck, FileText, Users } from "lucide-react";
 
 const About = () => {
   return (
-    <section id="sobre" className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
-     <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="relative z-10">
-              <img
-                src={felipeImg}
-                alt="Felipe Angelo dos Santos"
-                className="w-full max-w-md mx-auto rounded-2xl shadow-elevated"
-              />
-            </div>
-            {/* Decorative background */}
-            <div className="absolute top-8 left-8 w-full max-w-md h-full bg-gradient-primary rounded-2xl -z-0 opacity-20" />
-          </motion.div>
+    <section
+      id="sobre"
+      className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33] py-20"
+    >
+      <div className="mx-auto max-w-[1200px] px-6">
+        <span className="text-accent font-semibold uppercase tracking-wider">
+          Sobre nós
+        </span>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-              Sobre
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-6">
-              Felipe Angelo dos Santos
-            </h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              Com anos de experiência em Segurança do Trabalho, me dedico a ajudar 
-              empresas a navegar pelo complexo mundo do eSocial SST. Minha missão é 
-              garantir que sua empresa esteja sempre em conformidade, evitando multas 
-              e protegendo o que mais importa: seus colaboradores.
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 mb-6">
+          Especialistas em eSocial e SST
+        </h2>
+
+        <p className="text-white/80 text-lg mb-6 leading-relaxed">
+          A <strong>Integra Prime</strong> nasceu para ajudar empresas a
+          cumprirem todas as obrigações do eSocial e SST com segurança,
+          organização e tranquilidade.
+        </p>
+
+        <p className="text-white/80 text-lg mb-12 leading-relaxed">
+          Atuamos de forma consultiva, preventiva e estratégica, reduzindo
+          riscos trabalhistas e garantindo conformidade com a legislação
+          vigente.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-[#0E2A45] rounded-2xl p-6">
+            <ShieldCheck className="w-8 h-8 text-accent mb-4" />
+            <h4 className="font-semibold text-white mb-2">
+              Conformidade Legal
+            </h4>
+            <p className="text-white/70 text-sm">
+              Garantimos que sua empresa esteja alinhada às exigências legais
+              do eSocial e normas de SST.
             </p>
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              A <strong className="text-foreground">Integra Prime</strong> nasceu da 
-              necessidade de oferecer um serviço personalizado e de alta qualidade, 
-              com foco na prevenção e na gestão eficiente das obrigações trabalhistas.
+          </div>
+
+          <div className="bg-[#0E2A45] rounded-2xl p-6">
+            <FileText className="w-8 h-8 text-accent mb-4" />
+            <h4 className="font-semibold text-white mb-2">
+              Documentação Completa
+            </h4>
+            <p className="text-white/70 text-sm">
+              Gestão de laudos, eventos e obrigações periódicas com total
+              organização.
             </p>
+          </div>
 
-            {/* Credentials */}
-            <div className="space-y-4">
-              {credentials.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4"
-                >
-                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{item.title}</h4>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Why choose us */}
-            <div className="mt-10 p-6 bg-muted rounded-2xl">
-              <h4 className="font-bold text-foreground mb-4">Por que escolher a Integra Prime?</h4>
-              <ul className="space-y-3">
-                {[
-                  "Atendimento personalizado e humanizado",
-                  "Respostas rápidas e suporte contínuo",
-                  "Foco na prevenção de multas",
-                  "Integração completa com seus processos",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                    <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          <div className="bg-[#0E2A45] rounded-2xl p-6">
+            <Users className="w-8 h-8 text-accent mb-4" />
+            <h4 className="font-semibold text-white mb-2">
+              Atendimento Consultivo
+            </h4>
+            <p className="text-white/70 text-sm">
+              Suporte próximo e humanizado para orientar sua empresa em cada
+              etapa.
+            </p>
+          </div>
         </div>
       </div>
     </section>

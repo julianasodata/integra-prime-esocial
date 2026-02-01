@@ -5,25 +5,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const whatsappLink = "https://wa.me/5544988256277";
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const headerOffset = 96; // altura do header fixo
-    const elementPosition = el.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <footer className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
-      <div className="mx-auto max-w-[1400px] pt-8 pb-8 px-6">
+      <div className="mx-auto max-w-[1400px] pt-10 pb-8 px-6">
         <div className="grid md:grid-cols-3 gap-10">
-
           {/* Brand */}
           <div>
             <img
@@ -31,7 +16,7 @@ const Footer = () => {
               alt="Integra Prime"
               className="h-12 w-auto mb-4 brightness-0 invert"
             />
-            <p className="text-primary-foreground/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed">
               Gestão completa de eSocial e SST para empresas que buscam
               conformidade legal e tranquilidade.
             </p>
@@ -42,28 +27,28 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-white">Navegação</h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => scrollToSection("servicos")}
-                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                <a
+                  href="#servicos"
+                  className="text-white/70 hover:text-accent transition-colors"
                 >
                   Serviços
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("sobre")}
-                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                <a
+                  href="#sobre"
+                  className="text-white/70 hover:text-accent transition-colors"
                 >
                   Sobre
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("contato")}
-                  className="text-left text-primary-foreground/70 hover:text-accent transition-colors"
+                <a
+                  href="#contato"
+                  className="text-white/70 hover:text-accent transition-colors"
                 >
                   Contato
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -77,7 +62,7 @@ const Footer = () => {
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors"
+                  className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   (44) 98825-6277
@@ -86,7 +71,7 @@ const Footer = () => {
               <li>
                 <a
                   href="mailto:felipeangelorvsantos@gmail.com"
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors"
+                  className="flex items-center gap-2 text-white/70 hover:text-accent transition-colors"
                 >
                   <Mail className="w-4 h-4" />
                   felipeangelorvsantos@gmail.com
@@ -96,13 +81,12 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-primary-foreground/20 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/60 text-sm">
+        <div className="border-t border-white/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/60 text-sm">
             © {currentYear} Integra Prime. Todos os direitos reservados.
           </p>
-          <p className="text-primary-foreground/60 text-sm">
-            Felipe Angelo dos Santos — Técnico de Segurança do Trabalho
+          <p className="text-white/60 text-sm">
+            Felipe Angelo dos Santos – Técnico de Segurança do Trabalho
           </p>
         </div>
       </div>
