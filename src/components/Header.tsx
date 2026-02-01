@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import logoImg from "@/assets/thumb_logo.png";
 
-const HEADER_HEIGHT = 96; // ajuste se mudar o header
+const HEADER_HEIGHT = 96;
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,12 +37,8 @@ const Header = () => {
 
     setIsMobileMenuOpen(false);
 
-    // espera o menu fechar antes de scrollar (mobile fix)
     setTimeout(() => {
-      window.scrollTo({
-        top: y,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: y, behavior: "smooth" });
     }, 150);
   };
 
@@ -50,7 +46,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft"
+          ? "bg-[#0B2A4A]/95 backdrop-blur-md shadow-lg"
           : "bg-transparent"
       } h-20 lg:h-24`}
     >
@@ -58,9 +54,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <button
-            onClick={() =>
-              window.scrollTo({ top: 0, behavior: "smooth" })
-            }
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center touch-manipulation"
           >
             <img
@@ -76,20 +70,20 @@ const Header = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`font-medium transition-colors ${
-                  isScrolled
-                    ? "text-foreground hover:text-primary"
-                    : "text-primary-foreground/90 hover:text-primary-foreground"
-                }`}
+                className="font-medium text-white hover:text-accent transition-colors"
               >
                 {link.label}
               </button>
             ))}
           </nav>
 
-          {/* CTA */}
+          {/* CTA Desktop */}
           <div className="hidden md:block">
-            <Button asChild size="lg">
+            <Button
+              asChild
+              size="lg"
+              className="bg-blue-500 hover:bg-blue-600 text-white"
+            >
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 <Phone className="w-4 h-4 mr-2" />
                 Fale Comigo
@@ -100,9 +94,7 @@ const Header = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen((v) => !v)}
-            className={`md:hidden p-2 touch-manipulation ${
-              isScrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
+            className="md:hidden p-2 text-white touch-manipulation"
             aria-label="Abrir menu"
           >
             {isMobileMenuOpen ? (
@@ -122,20 +114,24 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-card border-t border-border"
+            className="md:hidden bg-[#061A33] border-t border-white/10"
           >
             <nav className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-left text-foreground font-medium py-3 text-lg touch-manipulation"
+                  className="text-left text-white text-lg font-medium py-3 hover:text-accent transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
 
-              <Button asChild size="lg">
+              <Button
+                asChild
+                size="lg"
+                className="bg-blue-500 hover:bg-blue-600 text-white mt-4"
+              >
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <Phone className="w-4 h-4 mr-2" />
                   Fale Comigo
