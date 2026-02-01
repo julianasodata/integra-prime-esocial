@@ -45,11 +45,11 @@ const Contact = () => {
               Contato
             </span>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-6 text-primary-foreground">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 mb-6 text-white">
               Vamos conversar sobre o seu negócio?
             </h2>
 
-            <p className="text-primary-foreground/80 text-lg mb-8 leading-relaxed">
+            <p className="text-white/80 text-lg mb-8 leading-relaxed">
               Entre em contato agora mesmo e descubra como posso ajudar sua
               empresa a estar em conformidade com o eSocial SST. Primeira
               consulta gratuita!
@@ -68,24 +68,16 @@ const Contact = () => {
                   {item.href ? (
                     <a
                       href={item.href}
-                      target={
-                        item.href.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        item.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-4 group"
                     >
                       <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center group-hover:bg-accent/30 transition-colors">
                         <item.icon className="w-6 h-6 text-accent" />
                       </div>
                       <div>
-                        <p className="text-primary-foreground/60 text-sm">
-                          {item.label}
-                        </p>
-                        <p className="font-semibold text-primary-foreground group-hover:text-accent transition-colors">
+                        <p className="text-white/60 text-sm">{item.label}</p>
+                        <p className="font-semibold text-white group-hover:text-accent transition-colors">
                           {item.value}
                         </p>
                       </div>
@@ -96,10 +88,8 @@ const Contact = () => {
                         <item.icon className="w-6 h-6 text-accent" />
                       </div>
                       <div>
-                        <p className="text-primary-foreground/60 text-sm">
-                          {item.label}
-                        </p>
-                        <p className="font-semibold text-primary-foreground">
+                        <p className="text-white/60 text-sm">{item.label}</p>
+                        <p className="font-semibold text-white">
                           {item.value}
                         </p>
                       </div>
@@ -112,7 +102,7 @@ const Contact = () => {
             <Button
               asChild
               size="lg"
-              className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold group transition-all"
+              className="bg-[#2196F3] hover:bg-[#1976D2] text-white px-6 py-6 rounded-lg font-semibold transition-all"
             >
               <a
                 href={whatsappLink}
