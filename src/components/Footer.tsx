@@ -1,9 +1,24 @@
 import { Phone, Mail } from "lucide-react";
 import logoImg from "@/assets/logo.png";
 
+const HEADER_HEIGHT = 96;
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const whatsappLink = "https://wa.me/5544988256277";
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <footer className="w-full bg-gradient-to-br from-[#0B2A4A] to-[#061A33]">
@@ -27,28 +42,28 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-white">Navegação</h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#servicos"
-                  className="text-white/70 hover:text-accent transition-colors"
+                <button
+                  onClick={() => scrollToSection("servicos")}
+                  className="text-left text-white/70 hover:text-accent transition-colors"
                 >
                   Serviços
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#sobre"
-                  className="text-white/70 hover:text-accent transition-colors"
+                <button
+                  onClick={() => scrollToSection("sobre")}
+                  className="text-left text-white/70 hover:text-accent transition-colors"
                 >
                   Sobre
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#contato"
-                  className="text-white/70 hover:text-accent transition-colors"
+                <button
+                  onClick={() => scrollToSection("contato")}
+                  className="text-left text-white/70 hover:text-accent transition-colors"
                 >
                   Contato
-                </a>
+                </button>
               </li>
             </ul>
           </div>
