@@ -49,7 +49,7 @@ const Contact = () => {
               Vamos conversar sobre o seu negócio?
             </h2>
 
-            <p className="text-white/80 text-lg mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-8">
               Entre em contato agora mesmo e descubra como posso ajudar sua
               empresa a estar em conformidade com o eSocial SST. Primeira
               consulta gratuita!
