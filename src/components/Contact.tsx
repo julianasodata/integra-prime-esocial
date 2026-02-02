@@ -49,7 +49,7 @@ const Contact = () => {
               Vamos conversar sobre o seu negócio?
             </h2>
 
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground mb-8 text-white">
               Entre em contato agora mesmo e descubra como posso ajudar sua
               empresa a estar em conformidade com o eSocial SST. Primeira
               consulta gratuita!
@@ -123,11 +123,11 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="bg-card text-foreground rounded-3xl p-8 md:p-10 shadow-elevated"
           >
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-white">
               Solicite uma Consulta Gratuita
             </h3>
 
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground mb-8 text-white">
               Avaliamos sua situação atual e apresentamos um plano
               personalizado para adequar sua empresa às exigências do
               eSocial SST.
@@ -142,12 +142,12 @@ const Contact = () => {
                     </span>
                   </div>
                   <div>
-                    <h4 className="font-semibold">
+                    <h4 className="font-semibold text-white">
                       {step === 1 && "Diagnóstico Inicial"}
                       {step === 2 && "Proposta Personalizada"}
                       {step === 3 && "Implementação"}
                     </h4>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-sm text-white">
                       {step === 1 &&
                         "Analisamos sua situação atual e identificamos gaps"}
                       {step === 2 &&
@@ -160,7 +160,7 @@ const Contact = () => {
               ))}
             </div>
 
-            <div className="mt-8 p-4 bg-accent/10 rounded-xl border border-accent/20">
+            <div className="mt-8 p-4 bg-accent/10 rounded-xl border border-accent/20 text-white">
               <p className="text-center text-sm">
                 <span className="text-accent font-semibold">
                   Não espere ser multado!
